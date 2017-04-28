@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        {% if user %}
+            <title>Super Sprinter 3000 - Edit Story</title>
+        {% else %}
+            <title>Super Sprinter 3000 - Add new Story</title>
+        {% endif %}
+
+    </head>
+
+    <body>
+
+        <h1>User Story manager - Add new story</h1>
+
+        <form action="/list" method="POST">
+            <p><label for="Story title">Story title</label><br>
+            <input name="Story title" id="Story title"></p>
+
+            <p><label for="User Story">User Story</label><br>
+            <textarea rows="10" cols="20" name="User Story" id="User Story"></textarea></p>
+
+            <p><label for="Acceptance criteria">Acceptance criteria</label><br>
+            <textarea rows="10" cols="20" name="Acceptance criteria" id="Acceptance criteria"></textarea></p>
+
+            <p><label for="Business Value">Business Value</label><br>
+            <input type="number" name="Business Value" id="Business Value" min="100" max="1500" step="100"></p>
+
+            <p><label for="Estimation">Estimation</label><br>
+            <input type="number" name="Estimation" id="Estimation" min="0.5" max="40" step="0.5"></p>
+
+            <p><label for="Status">Status</label><br>
+            <select name="Status" id="Status">
+                <option>Planning</option>
+                <option>TODO</option>
+                <option>In Progress</option>
+                <option>Review</option>
+                <option>Done</option>
+            </select></p>
+
+            {% if user %}
+                <p><input type="submit" value="Update"><p>
+            {% else %}
+                <p><input type="submit" value="Create"><p>
+            {% endif %}
+        </form>
+
+    </body>
+
+</html>

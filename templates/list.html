@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Super Sprinter 3000</title>
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>User Story manager</h1>
+
+<form>
+<p><input type="submit" value="Add a new User Story"><p>
+</form>
+
+<table style="width:100%">
+  <tr>
+    <th>ID</th>
+    <th>Story title</th> 
+    <th>User Story</th>
+    <th>Acceptance criteria</th>
+    <th>Business Value</th>
+    <th>Estimation (h)</th>
+    <th>Status</th>
+    <th>Empty</th>   
+  </tr>
+
+  
+{% for value in result %}
+         
+    <tr>
+        <td> {{ value }} </td>
+    </tr>
+            
+{% endfor %}
+  
+</table>
+
+</body>
+
+</html>
