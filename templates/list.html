@@ -2,50 +2,59 @@
 
 <html>
 
-<head>
+    <head>
 
-<title>Super Sprinter 3000</title>
+        <title>Super Sprinter 3000</title>
 
-<style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-</style>
+            <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            </style>
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-<h1>User Story manager</h1>
+        <h1>User Story manager</h1>
 
-<form>
-<p><input type="submit" value="Add a new User Story"><p>
-</form>
+        <form action="/list" method="POST">
+        <p><input type="submit" value="Add a new User Story"><p>
+        </form>
 
-<table style="width:100%">
-  <tr>
-    <th>ID</th>
-    <th>Story title</th> 
-    <th>User Story</th>
-    <th>Acceptance criteria</th>
-    <th>Business Value</th>
-    <th>Estimation (h)</th>
-    <th>Status</th>
-    <th>Empty</th>   
-  </tr>
+        <table style="width:100%">
+            <tr>
+                <th>ID</th>
+                <th>Story title</th> 
+                <th>User Story</th>
+                <th>Acceptance criteria</th>
+                <th>Business Value</th>
+                <th>Estimation (h)</th>
+                <th>Status</th>
+                <th></th>   
+            </tr>
 
-  
-{% for value in result %}
-         
-    <tr>
-        <td> {{ value }} </td>
-    </tr>
             
-{% endfor %}
-  
-</table>
+            
+            {% for data_row in database_as_list %}      
+            <tr>
+                <td> {{ data_row[0] }} </td>
+                <td> {{ data_row[1] }} </td>
+                <td> {{ data_row[2] }} </td>
+                <td> {{ data_row[3] }} </td>
+                <td> {{ data_row[4] }} </td>
+                <td> {{ data_row[5] }} </td>
+                <td> {{ data_row[6] }} </td>
+                <td> <a href="http://127.0.0.1:5000/story/<{{ data_row[0]}}>"> 
+                    <img src="pen.gif" alt="Edit Story" style="width:22px;height:22px;border:0;"></a> </td>
+               
+            </tr>
+            {% endfor %}
+            
+        
+        </table>
 
-</body>
+    </body>
 
 </html>
