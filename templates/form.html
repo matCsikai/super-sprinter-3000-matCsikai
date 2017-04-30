@@ -18,7 +18,11 @@
 
         <form action="/list" method="POST">
             <p><label for="Story title">Story title</label><br>
+            {% if story_id %}
+            <input name="Story title" id="Story title" value={{ data_for_edit[0]}}></p>
+            {% else %}
             <input name="Story title" id="Story title"></p>
+            {% endif %}
 
             <p><label for="User Story">User Story</label><br>
             <textarea rows="10" cols="20" name="User Story" id="User Story"></textarea></p>
