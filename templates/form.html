@@ -4,7 +4,7 @@
 
     <head>
 
-        {% if user %}
+        {% if story_id %}
             <title>Super Sprinter 3000 - Edit Story</title>
         {% else %}
             <title>Super Sprinter 3000 - Add new Story</title>
@@ -16,7 +16,7 @@
 
         <h1>User Story manager - Add new story</h1>
 
-        <form action="/story" method="POST">
+        <form action="/list" method="POST">
             <p><label for="Story title">Story title</label><br>
             <input name="Story title" id="Story title"></p>
 
@@ -41,7 +41,7 @@
                 <option>Done</option>
             </select></p>
 
-            {% if user %}
+            {% if story_id %}
                 <p><input type="submit" value="Update"><p>
             {% else %}
                 <p><input type="submit" value="Create"><p>
