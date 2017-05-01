@@ -18,10 +18,10 @@ def story(story_id=None):
                 data_for_edit = data_list
                 return render_template("form.html", story_id=story_id, data_for_edit=data_for_edit)
             # return to list template if ID not exist
-            elif story_id != data_list[0] and story_id < len(database_as_list):
+            elif story_id != data_list[0] and story_id <= len(database_as_list):
                 continue
             else:
-                return render_template("list.html", database_as_list=database_as_list)
+                return render_template("list.html")
 
 
 @app.route('/list', methods=['GET', 'POST'])
