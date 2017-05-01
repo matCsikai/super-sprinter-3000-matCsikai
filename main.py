@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/story/<int:story_id>', methods=['GET', 'POST'])
 def story(story_id=None):
     database_as_list = common.data_list_with_id()
-    # open empty add story form template
+    # opens empty add story form template
     if story_id is None:
         return render_template("form.html", story_id=story_id)
     else:
@@ -18,7 +18,7 @@ def story(story_id=None):
                 data_for_edit = data_list
                 return render_template("form.html", story_id=story_id, data_for_edit=data_for_edit)
             # return to list template if ID not exist
-            elif story_id != data_list[0] and story_id <= len(database_as_list):
+            elif story_id != data_list[0] and story_id < len(database_as_list):
                 continue
             else:
                 return render_template("list.html", database_as_list=database_as_list)
@@ -26,7 +26,7 @@ def story(story_id=None):
 
 @app.route('/list', methods=['GET', 'POST'])
 def list_manager():
-    # add story input to data.csv
+    # adds story input to data.csv
     database_as_list = common.data_list_with_id()
     if request.method == 'POST':
         story_title = request.form["Story title"]
@@ -42,7 +42,7 @@ def list_manager():
                             acceptance_criteria, "Business Value": business_value, "Estimation": estimation,
                             "Status": status})
         return render_template("list.html", database_as_list=database_as_list)
-    # send data with IDs to list template
+    # sends data with IDs to list template
     else:
         return render_template("list.html", database_as_list=database_as_list)
 
