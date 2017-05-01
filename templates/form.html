@@ -30,13 +30,17 @@
 
             <p><label for="User Story">User Story</label><br>
             {% if story_id %}
-            <textarea rows="10" cols="20" name="User Story" value={{ data_for_edit[2]}} id="User Story" ></textarea></p>
+            <textarea  placeholder={{ data_for_edit[2]}} rows="10" cols="20" name="User Story" id="User Story" ></textarea></p>
             {% else %}
             <textarea rows="10" cols="20" name="User Story" id="User Story"></textarea></p>
             {% endif %}
 
             <p><label for="Acceptance criteria">Acceptance criteria</label><br>
+            {% if story_id %}
+            <textarea placeholder={{ data_for_edit[2]}} rows="10" cols="20" name="Acceptance criteria" id="Acceptance criteria"></textarea></p>
+            {% else %}
             <textarea rows="10" cols="20" name="Acceptance criteria" id="Acceptance criteria"></textarea></p>
+            {% endif %}
 
             <p><label for="Business Value">Business Value</label><br>
             {% if story_id %}
