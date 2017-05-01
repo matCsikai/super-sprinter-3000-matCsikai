@@ -14,29 +14,49 @@
 
     <body>
 
-        <h1>User Story manager - Add new story</h1>
+        {% if story_id %}
+        <h1>User Story manager - Edit Story</h1>
+        {% else %}
+        <h1>User Story manager - Add new Story</h1>
+        {% endif %}
 
         <form action="/list" method="POST">
             <p><label for="Story title">Story title</label><br>
             {% if story_id %}
-            <input name="Story title" id="Story title" value={{ data_for_edit[0]}}></p>
+            <input name="Story title" id="Story title" value={{ data_for_edit[1]}}></p>
             {% else %}
             <input name="Story title" id="Story title"></p>
             {% endif %}
 
             <p><label for="User Story">User Story</label><br>
+            {% if story_id %}
+            <textarea rows="10" cols="20" name="User Story" value={{ data_for_edit[2]}} id="User Story" ></textarea></p>
+            {% else %}
             <textarea rows="10" cols="20" name="User Story" id="User Story"></textarea></p>
+            {% endif %}
 
             <p><label for="Acceptance criteria">Acceptance criteria</label><br>
             <textarea rows="10" cols="20" name="Acceptance criteria" id="Acceptance criteria"></textarea></p>
 
             <p><label for="Business Value">Business Value</label><br>
+            {% if story_id %}
+            <input type="number" name="Business Value" id="Business Value" min="100" max="1500" step="100" value={{ data_for_edit[4]}}></p>
+            {% else %}
             <input type="number" name="Business Value" id="Business Value" min="100" max="1500" step="100"></p>
+            {% endif %}
 
             <p><label for="Estimation">Estimation</label><br>
+            {% if story_id %}
+            <input type="number" name="Estimation" id="Estimation" min="0.5" max="40" step="0.5" value={{ data_for_edit[5]}}></p>
+            {% else %}
             <input type="number" name="Estimation" id="Estimation" min="0.5" max="40" step="0.5"></p>
+            {% endif %}
 
             <p><label for="Status">Status</label><br>
+            {% if story_id %}
+            <select name="Status" id="Status">
+                <option>{{ data_for_edit[6]}}</select></p>
+            {% else %}  
             <select name="Status" id="Status">
                 <option>Planning</option>
                 <option>TODO</option>
@@ -44,6 +64,7 @@
                 <option>Review</option>
                 <option>Done</option>
             </select></p>
+            {% endif %}
 
             {% if story_id %}
                 <p><input type="submit" value="Update"><p>
